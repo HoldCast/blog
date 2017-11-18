@@ -35,8 +35,3 @@ deploy:
     hexo help # 查看帮助
 
     hexo version #查看Hexo的版本
-
-    作者：潘柏信
-    链接：http://www.jianshu.com/p/465830080ea9
-    來源：简书
-    著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
