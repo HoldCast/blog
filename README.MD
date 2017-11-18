@@ -35,3 +35,9 @@ deploy:
     hexo help # 查看帮助
 
     hexo version #查看Hexo的版本
+
+---
+配置yilia主题
+---
+1.$ git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia   //下载主题
+2.hexo g , hexo s //打开本地服务调试
