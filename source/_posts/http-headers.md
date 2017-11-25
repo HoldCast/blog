@@ -12,13 +12,15 @@ tags:
 ```
 function ajax(){
     var xhr = null;
+    var url = window.location.href;
     if(window.XMLHttpRequest){
       xhr = new window.XMLHttpRequest();
     }else{ // ie
       xhr = new ActiveObject("Microsoft")
     }
     // 通过get的方式请求当前文件
-    xhr.open("get","/");
+    //xhr.open("get",url);
+    xhr.open("get",url,false);  //同步
     xhr.send(null);
     // 监听请求状态变化
     xhr.onreadystatechange = function(){
@@ -26,6 +28,10 @@ function ajax(){
             var time = xhr.getResponseHeader("Date");
             var curDate = new Date(time);
         }
+    }
+    if (xhr.status === 200) {
+        var time = xhr.getResponseHeader("Date");
+        curDate = new Date(time);
     }
   }
 ```
