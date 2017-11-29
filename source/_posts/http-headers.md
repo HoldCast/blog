@@ -13,17 +13,20 @@ tags:
 function ajax(){
     var xhr = null;
     var url = window.location.href;
-    if(window.XMLHttpRequest){
-      xhr = new window.XMLHttpRequest();
+    if(window.xhrRequest){
+      xhr = new window.xhrRequest();
     }else{ // ie
       xhr = new ActiveObject("Microsoft")
     }
     // 通过get的方式请求当前文件
-    //xhr.open("get",url);
     xhr.open("get",url,false);  //同步
+    //不推荐使用 async=false，但是对于一些小型的请求，也是可以的。
+    //xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    //xhr.send("fname=Henry&lname=Ford");
     xhr.send(null);
-    // 监听请求状态变化
+    // 监听请求状态变化 当使用 async=true 时，请规定在响应处于 onreadystatechange 事件中的就绪状态时执行的函数：
     xhr.onreadystatechange = function(){
+        //if (xhr.readyState==4 && xhr.status==200)
         if(xhr.readyState===2){
             var time = xhr.getResponseHeader("Date");
             var curDate = new Date(time);
@@ -33,6 +36,10 @@ function ajax(){
         var time = xhr.getResponseHeader("Date");
         curDate = new Date(time);
     }
+
+    //其他ajax相关
+    //xhr.responseText	获得字符串形式的响应数据。
+    //xhr.responseXML	获得 XML 形式的响应数据。
   }
 ```
 2.jquery-ajax方法获取:
